@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   controllers: [],
@@ -26,6 +27,7 @@ import { RoleModule } from './role/role.module';
     }),
     UserModule,
     RoleModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
