@@ -37,3 +37,17 @@
     width: 100%;
   }
 }
+
+.blue {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  background-color: #3e3eff;
+  padding: 8px 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  &:hover {
+    background-color: darken(#3e3eff, 5);
+  }
+}

@@ -7,17 +7,25 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { TemporaryDrawer } from '../Drawer';
+import { AuthDialog } from '../AuthDialog';
 
 export const Header: React.FC = () => {
-  const isAuth = true;
+  const isAuth = false;
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [authOpen, setAuthOpen] = React.useState(false);
 
   const openDrawer = () => {
     setDrawerOpen(true);
   };
   const closeDrawer = () => {
     setDrawerOpen(false);
+  };
+  const openAuth = () => {
+    setAuthOpen(true);
+  };
+  const closeAuth = () => {
+    setAuthOpen(false);
   };
 
   return (
@@ -56,7 +64,7 @@ export const Header: React.FC = () => {
               </>
             ) : (
               <>
-                <li className={styles.item}>
+                <li className={styles.item} onClick={openAuth}>
                   <LoginOutlinedIcon />
                 </li>
               </>
@@ -65,6 +73,7 @@ export const Header: React.FC = () => {
         </div>
       </div>
       <TemporaryDrawer onClose={closeDrawer} open={drawerOpen} />
+      <AuthDialog onClose={closeAuth} open={authOpen} />
     </header>
   );
 };
