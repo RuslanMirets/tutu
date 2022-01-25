@@ -1,0 +1,42 @@
+.header {
+  border-bottom: 1px solid #eaeaea;
+  padding: 20px 0;
+  .body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .cart {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-right: 10px;
+      cursor: pointer;
+      span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        color: #5c5c5c;
+      }
+      &:hover {
+        svg {
+          fill: #5c5c5c;
+        }
+      }
+    }
+    svg {
+      fill: #9b9b9b;
+      transition: all 0.3s;
+      &:hover {
+        fill: #5c5c5c;
+      }
+    }
+    .item {
+      cursor: pointer;
+    }
+  }
+}
