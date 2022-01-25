@@ -6,9 +6,19 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import { TemporaryDrawer } from '../Drawer';
 
 export const Header: React.FC = () => {
   const isAuth = true;
+
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const openDrawer = () => {
+    setDrawerOpen(true);
+  };
+  const closeDrawer = () => {
+    setDrawerOpen(false);
+  };
 
   return (
     <header className={styles.header}>
@@ -22,7 +32,7 @@ export const Header: React.FC = () => {
           <ul className={styles.actions}>
             {isAuth ? (
               <>
-                <li className={styles.cart}>
+                <li className={styles.cart} onClick={openDrawer}>
                   <ShoppingCartOutlinedIcon />
                   <span>1205 руб.</span>
                 </li>
@@ -54,6 +64,7 @@ export const Header: React.FC = () => {
           </ul>
         </div>
       </div>
+      <TemporaryDrawer onClose={closeDrawer} open={drawerOpen} />
     </header>
   );
 };

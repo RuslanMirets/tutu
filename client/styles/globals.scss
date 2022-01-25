@@ -42,3 +42,9 @@ main {
   max-width: 960px;
   margin: 0 auto;
 }
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}

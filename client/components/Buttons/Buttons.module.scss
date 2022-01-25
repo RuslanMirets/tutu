@@ -1,0 +1,39 @@
+.green {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  background-color: #9dd558;
+  border-radius: 18px;
+  padding: 18px 42px;
+  transition: background-color 0.3s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: darken(#9dd558, 5);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 14px;
+    transition: all 0.3s;
+  }
+
+  &.arrowRigth {
+    &::before {
+      right: 100px;
+      background-image: url('/static/arrow-right.svg');
+    }
+    &:hover {
+      &::before {
+        right: 95px;
+      }
+    }
+  }
+  &.order {
+    width: 100%;
+  }
+}
