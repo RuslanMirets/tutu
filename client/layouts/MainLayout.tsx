@@ -1,7 +1,9 @@
+import { MuiThemeProvider } from '@material-ui/core';
 import Head from 'next/head';
 import React from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
+import { theme } from '../theme';
 
 interface MainLayoutProps {
   title?: string;
@@ -24,11 +26,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, title, description, k
           href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800,900&display=swap"
         />
       </Head>
-      <div className="wrapper">
-        <Header />
-        <main className="main">{children}</main>
-        <Footer />
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="wrapper">
+          <Header />
+          <main className="main">{children}</main>
+          <Footer />
+        </div>
+      </MuiThemeProvider>
     </>
   );
 };

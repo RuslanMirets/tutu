@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormSchema } from '../../../utils/validations';
 import { FormField } from '../../FormField';
-import { BtnBlue } from '../../Buttons/BtnBlue';
+import { Button } from '@material-ui/core';
 
 interface LoginFormProps {
   onOpenRegister: () => void;
@@ -13,21 +13,30 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
   const form = useForm({
     mode: 'onChange',
     resolver: yupResolver(LoginFormSchema),
+    reValidateMode: 'onChange',
   });
+
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <FormProvider {...form}>
       <h2 className="text-center mb-30">Авторизация</h2>
-      <form>
-        <FormField name="email" label="Email" />
-        <FormField name="password" label="Пароль" />
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <FormField name="email" label="Email" type="email" />
+        <FormField name="password" label="Пароль" type="password" />
         <div className="d-flex justify-between align-center">
           <div className="d-flex">
-            <div className="ml-10 cu-p" onClick={onOpenRegister}>
+            <Button onClick={onOpenRegister} color="primary" variant="text">
               Регистрация
-            </div>
+            </Button>
           </div>
-          <BtnBlue>Войти</BtnBlue>
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            disabled={!form.formState.isValid}>
+            Войти
+          </Button>
         </div>
       </form>
     </FormProvider>
