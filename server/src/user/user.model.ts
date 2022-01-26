@@ -3,6 +3,8 @@ import { RoleModel } from './../role/role.model';
 import { BelongsToMany, Column, DataType, Model, Table } from 'sequelize-typescript';
 
 interface UserCreationAttrs {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }
@@ -11,6 +13,12 @@ interface UserCreationAttrs {
 export class UserModel extends Model<UserModel, UserCreationAttrs> {
   @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
+
+  @Column({ type: DataType.STRING, allowNull: false })
+  firstName: string;
+
+  @Column({ type: DataType.STRING, allowNull: false })
+  lastName: string;
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   email: string;
